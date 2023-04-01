@@ -1,4 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit';
+import { persistReducer } from 'redux-persist';
+import storage from 'redux-persist/lib/storage';
 
 const todosInitialState = { items: [] };
 
@@ -16,4 +18,10 @@ const todosSlice = createSlice({
 });
 
 export const { addTodo, deleteTodo, toggleCompleted } = todosSlice.actions;
-export const todosReducer = todosSlice.reducer;
+
+const persistConfig = {
+  key: 'contacts',
+  storage,
+};
+
+export const todosReducer = persistReducer(persistConfig, todosSlice.reducer);

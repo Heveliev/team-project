@@ -1,9 +1,9 @@
 import { useSelector } from 'react-redux';
-import { selectTodos } from 'redux/selects';
 import { Grid, GridItem, Todo } from 'components';
+import { selectFiltredTodos } from 'redux/selects';
 
 export const TodosList = () => {
-  const todos = useSelector(selectTodos);
+  const todos = useSelector(selectFiltredTodos);
   return (
     <Grid>
       {todos.length > 0 &&
